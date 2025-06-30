@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/product', [ProductController::class, 'getProduct'])->name('product.get-product');
+    Route::get('/product-image/{path}', [ProductController::class, 'getProductImage'])->where('path', '.*')->name('product.get-product-image');
+    Route::post('/products/batch-store', [ProductController::class, 'batchStore']);
+    Route::post('/products/{id}', [ProductController::class, 'update']);
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
