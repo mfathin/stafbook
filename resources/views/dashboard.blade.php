@@ -15,41 +15,6 @@
                                 Product List
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive rounded">
-                                    <table class="table table-bordered">
-                                        <thead style="background-color: #40217a">
-                                            <th class="text-white">No</th>
-                                            <th class="text-white">Produk</th>
-                                            <th class="text-white">Deskripsi Produk</th>
-                                            <th class="text-white">Gambar Produk</th>
-                                            <th class="text-white">Aksi</th>
-                                            <th class="text-white"></th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td rowspan="2">1</td>
-                                                <td rowspan="2">Obat</td>
-                                                <td>Obat Batuk</td>
-                                                <td><i class="fa-solid fa-upload"></i></td>
-                                                <td><i class="fa-solid fa-trash"></i></td>
-                                                <td rowspan="2"><i class="fa-solid fa-trash"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td><i class="fa-solid fa-upload"></i></td>
-                                                <td><i class="fa-solid fa-square-plus"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><i class="fa-solid fa-upload"></i></td>
-                                                <td><i class="fa-solid fa-square-plus"></i></td>
-                                                <td><i class="fa-solid fa-square-plus"></i></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -61,8 +26,21 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
     integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-{{-- <script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
     $(document).ready(function() {
-        alert('test');
-    })
-</script> --}}
+        const url = '{{ route('product.get-product') }}'
+
+        axios.get(url)
+            .then(function(response) {
+                $('.card-body').append(response.data);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+            .finally(function() {
+            });
+    });
+</script>
